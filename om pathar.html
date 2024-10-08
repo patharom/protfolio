@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Resume</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* Custom Antique Theme Styling */
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .drawn-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 65px;
+            font-weight: bold;
+            fill:#ffffff;
+            stroke-width: 1.5px;
+            stroke-dasharray: 100%;
+            stroke-dashoffset: 100%;
+            animation: draw 6s ease-in-out forwards;
+        }
+        .header, .footer {
+            background-color:rgb(128, 43, 226);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            animation: slideInFromTop 1.5s ease-in-out;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+        .header p {
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+        .btn-outline-light {
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+        .main-content {
+            padding: 60px;
+            background-color: #ffffffdf;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: -30px;
+            border-radius: 20px;
+            animation: fadein 2s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            border-bottom: 2px solid rgb(128, 43, 226);
+            padding-bottom: 10px;
+            opacity: 0;
+            animation: fadeInLeft 1.5s ease-in-out forwards;
+        }
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            opacity: 0;
+            animation: fadeInLeft 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 10px;
+            margin-bottom: 50px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #4b3832;
+            animation: growDown 1s ease-in-out forwards;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            opacity: 0;
+            animation: fadeInRight 1.5s ease-in-out forwards;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background-color: #4b3832;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+        .skills span {
+            display: inline-block;
+            background-color: rgb(128, 43, 226);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+        .skills span:hover {
+            transform: scale(1.1);
+            background-color: black;
+            color: #fff;
+        }
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes growDown {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+        
+         
+        @keyframes draw {
+            0% {
+                stroke-dashoffset: 100%;
+                fill: #ffffff; 
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                fill: #ffffff; 
+           }
+            100% {
+                stroke-dashoffset: 0;
+                fill: #ffffff; 
+        }
+}
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px #4b3832, 0 0 20px #4b3832, 0 0 30px #4b3832, 0 0 40px #4b3832;
+            }
+            50% {
+                box-shadow: 0 0 20px #17141300, 0 0 30px #231d1b00, 0 0 40px #140c0900, 0 0 50px #3e120000;
+            }
+            100% {
+                box-shadow: 0 0 10px #ffffff00, 0 0 20px #00000000, 0 0 30px #00000000, 0 0 40px #00000000;
+            }
+        }
+
+        @keyframes scaleIn {
+           from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+       }
+  }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <div class="container">
+
+            <svg viewBox="0 0 600 100">
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="drawn-text">om pathar</text>
+            </svg>
+
+            <p><h3>Mern Stack Devloper</h3></p>
+            <div>
+                <a href="https://www.linkedin.com/in/om-pathar-21805032b/" class="btn btn-outline-light mx-2" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/patharom" class="btn btn-outline-light mx-2">GitHub</a>
+                <a href="https://leetcode.com/ompathar" class="btn btn-outline-light mx-2">Leetcode</a>
+         </div>
+     </div>
+  </div>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Summary Section -->
+        <div class="mb-5">
+            <h2 class="section-title">Profile</h2>
+            <p>Full Stack Developer with expertise in creating responsive and dynamic web applications. Skilled in modern technologies including React, Node.js, and Bootstrap. Seeking to leverage my expertise in a challenging role.</p>
+        </div>
+
+        <!-- Education Section -->
+        <div class="mb-5">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item" style="animation-delay: 0.2s">
+                    <h5><li>Bachelor of commerce [2021 - 2024]</li></h5>
+                        <p>shree sahajanand Arts & commerce collage</p>
+                    <h5><li>HSC</li></h5>
+                    <div class="timeline-item" style="animation-delay: 0.4s;"></div>
+                    <p>shree D.M ajmera higher secondary school</p>
+                    <!-- <p>Full Stack Development course at Skill-code Institute</p> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Experience Section -->
+        <div class="mb-5">
+            <h2 class="section-title">Project</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    
+                    <ul>
+                      <li><a href="https://my-blog-71p2.onrender.com" class="btn btn-outline-dark btn-sm mb-1">Blog website in Node.js</a><p>blog website is create by node.js using ejs, jwt and
+                        mongodb a blog website it is in add register user, login user after login in add blog in blog website in node js. devloped a full-stack blog application using node js </p></li>
+                      <li><a href="https://legendary-lily-384c2c.netlify.app" class="btn btn-outline-dark btn-sm mb-1">E-commerce web in React</a>
+                        <p>Emart website is create by react.js using react redux,use neviget, router, use state, and responsive website.
+                        Emart website in create nevbar in using react router.
+                        </p></li>
+                        <!-- <li>CRUD app in React.js.</li>
+                        <li>Dashboard Design in Bootstrap.</li>
+                        <li>TODO list CRUD operation in Node.js.</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>  
+
+        <!-- Skills Section -->
+        <div class="mb-5">
+            <h2 class="section-title">Computer Skills</h2>
+            <div class="skills">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Bootstrap</span>
+                <span>Tailwind</span>
+                <span>JavaScript</span>
+                <span>HTML & CSS</span>
+                <span>Git & GitHub</span>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <h2 class="section-title">Soft skill</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+            <ui> 
+                <li>Time management</li>
+                    <li>Teamwork</li>
+                    <li>Leadership</li>
+                    <li>Problem-solving</li>
+                    <li>Communication</li>
+            </ui>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5">
+            <h2 class="section-title">Certifed course</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <ui>
+                        <h5><li>Mern stack Devlopment course</li></h5>
+                            <li>Skillqude Decode your skill</li>
+                    </ui>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p><i class="fa-solid fa-phone pr-4"></i>7043224967</p>
+            <p><i href class="fa-regular fa-envelope pr-4"></i>ompathar@gmail.com</p>
+            <p><i class="fa-solid fa-location-dot pr-4"></i>saundary heights yogi chowk Surat, Gujarat</p>
+        </div>
+    </div>
+     
+    <!-- Bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
